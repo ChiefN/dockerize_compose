@@ -1,0 +1,20 @@
+---
+let sqlRes = await fetch('http://localhost:3000/sql')
+.then(res => res.text())
+.then(data => data)
+.catch(err => console.log(err));
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro SSR</title>
+	</head>
+	<body>
+		<h1>This is SSR - Below is from DB</h1>
+		<p>{sqlRes}</p>
+	</body>
+</html>

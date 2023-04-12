@@ -1,0 +1,22 @@
+services:
+  astrossr:
+    build:
+      context: ./astrossr
+      dockerfile: Dockerfile
+    image: astrossr
+    ports:
+      - "3000:3000"
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=customdb
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=pass
+      - MYSQL_ROOT_PASSWORD=rootpass
+    command: "--default-authentication-plugin=mysql_native_password"
+    volumes:
+      - mysql-db:/var/lib/mysql 
+      - ./mysql:/docker-entrypoint-initdb.d
+
+volumes:
+  mysql-db:
